@@ -1,0 +1,8 @@
+PROJECT_DIR : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco'
+optimizer : 'adam'
+loss : 'sparse_categorical_crossentropy'
+metrics : 'accuracy'
+batch_size : 128
+epoch : 10
+SaveModelDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveModels/'
+wanted_model : '2023_05_05_19_46_30'
