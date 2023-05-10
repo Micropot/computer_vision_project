@@ -6,7 +6,7 @@ import src.gui
 from src.gui import Tk
 
 def main(argv):
-    #TODO requiement environement for git hub
+    #TODO requiement environement for git hub ok c'est bon
     proj_param = src.Parameters.Parameters()
     proj_param = src.file_reading.YAML_Reader(argv[1], proj_param)
 
