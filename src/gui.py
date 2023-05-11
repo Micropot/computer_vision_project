@@ -1,3 +1,4 @@
+import datetime
 from tkinter import *
 from tkinter.ttk import Scale
 from tkinter import colorchooser, filedialog, messagebox
@@ -123,26 +124,24 @@ class Draw():
             #Create a folder for the images
             SaveImage.CreateFolder_Image(self.Parameters)
             #file_ss = filedialog.asksaveasfilename(defaultextension='png')
-            file_ss = "test.png"
-            print(file_ss)
+            #now = datetime.datetime.now()
+            #currentDateTime = now.strftime("%Y_%m_%d_%H_%M_%S")
+            file_ss = 'raw_image.png'
+            image_path = os.path.join(self.Parameters.SaveImageDir, file_ss)
+            print("file_ss : ",image_path)
             x = self.root.winfo_rootx() + self.background.winfo_x()
-            print("self.root.winfo_rootx()", self.root.winfo_rootx())
-            print("x  self.background.winfo_x()")
+            #print("self.root.winfo_rootx()", self.root.winfo_rootx())
+            #print("x  self.background.winfo_x()")
             print(x, self.background.winfo_x())
             y = self.root.winfo_rooty() + self.background.winfo_y()
-            print("y : ",y)
+            #print("y : ",y)
 
             x1 = x + self.background.winfo_width()
-            print("x1 : ",x1)
+            #print("x1 : ",x1)
             y1 = y + self.background.winfo_height()
             #print("y1 : ",y1)
             #ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
-            ImageGrab.grab((x, y, x1, y1)).save(file_ss)
-            '''self.background.update()
-            self.background.postscript(file="tmp.ps", colormode="color")
-            process = subprocess.Popen(["ps2pdf", "tmp.ps", "result.pdf"], shell=True)
-            process.wait()
-            os.remove("tmp.ps")'''
+            ImageGrab.grab((x, y, x1, y1)).save(image_path)
 
             messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
 
