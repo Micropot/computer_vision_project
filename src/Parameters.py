@@ -14,6 +14,7 @@ class Parameters:
         self.x_test = None
         self.y_test = None
         self.inf_model = None
+        self.SaveImageDir = None
 
     def Print(self):
         print("PROJ_DIR : ", self.PROJECT_DIR)

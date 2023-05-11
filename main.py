@@ -6,7 +6,6 @@ import src.gui
 from src.gui import Tk
 
 def main(argv):
-    #TODO requiement environement for git hub ok c'est bon
     proj_param = src.Parameters.Parameters()
     proj_param = src.file_reading.YAML_Reader(argv[1], proj_param)
 
@@ -16,14 +15,14 @@ def main(argv):
     MyIA = NN()
     MyIA.load_dataset(proj_param)
     MyIA.CreateModel(proj_param)
-    MyIA.training(Parameters=proj_param)
+   # MyIA.training(Parameters=proj_param)
 
 
 
     #*********** GUI ************
     root = Tk()
-    p = src.gui.Draw(root)
-    #root.mainloop()
+    p = src.gui.Draw(root, proj_param)
+    root.mainloop()
 
 
 

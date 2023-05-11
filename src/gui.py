@@ -1,14 +1,20 @@
 from tkinter import *
 from tkinter.ttk import Scale
 from tkinter import colorchooser, filedialog, messagebox
+import subprocess
+import os
 import PIL.ImageGrab as ImageGrab
+
+import Parameters
+import SaveImage
 
 
 # Defining Class and constructor of the Program
 class Draw():
-    def __init__(self, root):
+    def __init__(self, root, Parameters):
 #TODO : canvas size + save button + check where the images is saved + prediction with the loaded NN
         # Defining title and Size of the Tkinter Window GUI
+        self.Parameters = Parameters
         self.root = root
         self.root.title("Copy Assignment Painter")
         self.root.geometry("810x530")
@@ -105,10 +111,17 @@ class Draw():
         self.background.configure(background=color[1])
         self.erase = color[1]
 
+    def SaveFile(self, Parameters):
+        dir_path = os.path.dirname(Parameters.SaveImageDir)
+        print("dir_path : ",dir_path)
+
+
     # Function for saving the image file in Local Computer
     def save_drawing(self):
         try:
             self.background.update()
+            #Create a folder for the images
+            SaveImage.CreateFolder_Image(self.Parameters)
             #file_ss = filedialog.asksaveasfilename(defaultextension='png')
             file_ss = "test.png"
             print(file_ss)
@@ -123,8 +136,13 @@ class Draw():
             print("x1 : ",x1)
             y1 = y + self.background.winfo_height()
             #print("y1 : ",y1)
-            ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
-            #ImageGrab.grab().save(file_ss)
+            #ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
+            ImageGrab.grab((x, y, x1, y1)).save(file_ss)
+            '''self.background.update()
+            self.background.postscript(file="tmp.ps", colormode="color")
+            process = subprocess.Popen(["ps2pdf", "tmp.ps", "result.pdf"], shell=True)
+            process.wait()
+            os.remove("tmp.ps")'''
 
             messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
 
