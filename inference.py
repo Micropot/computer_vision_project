@@ -16,10 +16,10 @@ def inference(argv):
     model_path = os.path.join(user_path, "bestmodel.hdf5")
 
     MyIA_inf = NN()
-    #MyIA_inf.load_dataset(inf_param)
-    #inf_param.inf_model = MyIA_inf.CreateModel(inf_param)
-    inf_model = MyIA_inf.LoadModel(Parameters=inf_param)
-    inf_model.load_weights(model_path)
+    MyIA_inf.load_dataset(inf_param)
+    MyIA_inf.CreateModel(inf_param)
+    MyIA_inf.LoadModel(Parameters=inf_param)
+    MyIA_inf.evaluate(inf_param)
 
     #results = inf_model.evaluate(inf_param.x_test, inf_param.y_test)
     #print("test loss, test acc:", results)

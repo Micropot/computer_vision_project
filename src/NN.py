@@ -74,8 +74,11 @@ class NN():
             callbacks=[Parameters.cp_callback]
         )
         #SaveModels.VisualiseModel(Parameters)
-        results = self.model.evaluate(self.x_test, self.y_test)
+
+    def evaluate(self, Parameters):
+        results = self.model.evaluate(Parameters.x_test, Parameters.y_test)
         print("test loss, test acc:", results)
+
 
 
     def Prediction(self, MyImage):

@@ -17,7 +17,9 @@ def main(argv):
     MyIA.load_dataset(proj_param)
     MyIA.CreateModel(proj_param)
     print("--------- TYPE :", type(MyIA.CreateModel(proj_param)))
-    MyIA.training(Parameters=proj_param)
+    #MyIA.training(Parameters=proj_param)
+    MyIA.LoadModel(proj_param)
+    MyIA.evaluate(proj_param)
 
 
     #*********** GUI ************
