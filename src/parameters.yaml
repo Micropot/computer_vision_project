@@ -5,4 +5,4 @@ metrics : 'accuracy'
 batch_size : 128
 epoch : 10
 SaveModelDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveModels/'
-wanted_model : '2023_05_05_19_46_30'
+wanted_model : '2023_05_10_17_23_35'
