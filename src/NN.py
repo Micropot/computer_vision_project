@@ -1,9 +1,11 @@
+import numpy as np
 import tensorflow as tf
 import SaveModels
 from keras.models import load_model
 from keras.utils import CustomObjectScope
 from keras.initializers import glorot_uniform
 import os
+from PIL import Image
 
 mnist = tf.keras.datasets.mnist
 
@@ -83,8 +85,12 @@ class NN():
 
     def Prediction(self, MyImage):
         print ("Prediction for one image")
+        img = Image.open(MyImage).convert("L")
+        img = img.resize((28, 28))
+        resized_img = np.array(img)
+        resized_img = resized_img.reshape(1,28,28)
+        result = self.model.predict(resized_img)
 
-        result = self.model.predict(MyImage)
 
         print ("result =", result)
 

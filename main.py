@@ -1,3 +1,5 @@
+import glob
+import os.path
 import sys
 from src.NN import NN
 import src.Parameters
@@ -17,7 +19,7 @@ def main(argv):
     MyIA.load_dataset(proj_param)
     MyIA.CreateModel(proj_param)
    # MyIA.training(Parameters=proj_param)
-
+    MyIA.LoadModel(proj_param)
 
 
     #*********** GUI ************
@@ -29,8 +31,12 @@ def main(argv):
     #******** IMAGE **********
     MyImage = ImageManagement()
 
-    MyImage.DonneeImage = MyImage.LectureFichierImage('/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveImages/raw_image.png', proj_param)
+    MyImage.DonneeImage = MyImage.LectureFichierImage(str(proj_param.SaveImageDir + 'raw_image.png'), proj_param)
     #MyImage.ResizeImage()
+    list_of_file = glob.glob(str(proj_param.SaveImageDir + '/*.png'))
+    latest_file = max(list_of_file, key=os.path.getctime)
+    print("latest file : ", latest_file)
+    MyIA.Prediction(latest_file)
 
 
 

@@ -13,7 +13,6 @@ import SaveImage
 # Defining Class and constructor of the Program
 class Draw():
     def __init__(self, root, Parameters):
-#TODO : canvas size + save button + check where the images is saved + prediction with the loaded NN
         # Defining title and Size of the Tkinter Window GUI
         self.Parameters = Parameters
         self.root = root
@@ -77,7 +76,7 @@ class Draw():
         self.pointer_frame = LabelFrame(self.root, text='size', bd=5, bg='white', font=('arial', 15, 'bold'),relief=RIDGE)
         self.pointer_frame.place(x=0, y=320, height=200, width=70)
 
-        self.pointer_size = Scale(self.pointer_frame, orient=VERTICAL, from_=48, to=0, length=168)
+        self.pointer_size = Scale(self.pointer_frame, orient=VERTICAL, from_=48, to=48, length=168)
         self.pointer_size.set(1)
         self.pointer_size.grid(row=0, column=1, padx=15)
 
