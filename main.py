@@ -8,6 +8,7 @@ import src.gui
 from src.gui import Tk
 from src.data_processing import ImageManagement
 
+#TODO : https://medium.com/analytics-vidhya/handwritten-digit-recognition-gui-app-46e3d7b37287
 def main(argv):
     proj_param = src.Parameters.Parameters()
     proj_param = src.file_reading.YAML_Reader(argv[1], proj_param)
@@ -18,7 +19,7 @@ def main(argv):
     MyIA = NN()
     MyIA.load_dataset(proj_param)
     MyIA.CreateModel(proj_param)
-   # MyIA.training(Parameters=proj_param)
+    #MyIA.training(Parameters=proj_param)
     MyIA.LoadModel(proj_param)
 
 

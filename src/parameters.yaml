@@ -3,7 +3,7 @@ optimizer : 'adam'
 loss : 'sparse_categorical_crossentropy'
 metrics : 'accuracy'
 batch_size : 128
-epoch : 10
+epoch : 50
 SaveModelDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveModels/'
-wanted_model : '2023_05_10_17_23_35'
+wanted_model : '2023_05_16_16_11_43'
 SaveImageDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveImages/'

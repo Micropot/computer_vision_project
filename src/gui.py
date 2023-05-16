@@ -1,5 +1,6 @@
 import datetime
 from tkinter import *
+import tkinter as tk
 from tkinter.ttk import Scale
 from tkinter import colorchooser, filedialog, messagebox
 import subprocess

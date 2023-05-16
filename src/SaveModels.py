@@ -18,7 +18,7 @@ def CreateFolder(Parametre, trial):
 
 
 def SaveModel(Parametres):
-    checkpoint_path = os.path.join(Parametres.SaveModelDir, "bestmodel.hdf5")
+    checkpoint_path = os.path.join(Parametres.SaveModelDir, "bestmodel.h5")
     Parametres.checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, save_weights_only=False,save_best_only=True, monitor='val_accuracy', mode='max', verbose=1)
     Parametres.cp_callback = [Parametres.checkpoint]
 

@@ -6,8 +6,10 @@ from keras.utils import CustomObjectScope
 from keras.initializers import glorot_uniform
 import os
 from PIL import Image
+import PIL.ImageOps
 
 mnist = tf.keras.datasets.mnist
+
 
 class NN():
     def __int__(self):
@@ -20,7 +22,6 @@ class NN():
         self.y_test = []
         self.model = None
         self.prediction = -1
-
 
     def load_dataset(self, Parameters):
         (self.x_train, self.y_train), (self.x_test, self.y_test) = tf.keras.datasets.mnist.load_data()
@@ -57,12 +58,10 @@ class NN():
                            loss=Parameters.loss,
                            metrics=[Parameters.metrics])
 
-
-
     def training(self, Parameters):
         SaveModels.CreateFolder(Parameters, None)
 
-        #self.model = self.CreateModel(Parameters)
+        # self.model = self.CreateModel(Parameters)
         Parameters.current_model = self.model
         SaveModels.SaveModel(Parameters)
 
@@ -75,32 +74,49 @@ class NN():
             shuffle=True,
             callbacks=[Parameters.cp_callback]
         )
-        #SaveModels.VisualiseModel(Parameters)
+        # SaveModels.VisualiseModel(Parameters)
 
     def evaluate(self, Parameters):
         results = self.model.evaluate(Parameters.x_test, Parameters.y_test)
         print("test loss, test acc:", results)
 
-
-
-    def Prediction(self, MyImage):
-        print ("Prediction for one image")
-        img = Image.open(MyImage).convert("L")
+    def Prediction(self, img):
+        print("Prediction for one image")
+        '''img = Image.open(MyImage).convert("L")
         img = img.resize((28, 28))
-        resized_img = np.array(img)
-        resized_img = resized_img.reshape(1,28,28)
+        #img = PIL.ImageOps.invert(img)
+        img = np.array(img)
+        resized_img = img.reshape(1, 28, 28, 1)
+        #print("shape : ", resized_img.shape())
+        resized_img = resized_img/255.0
         result = self.model.predict(resized_img)
 
-
-        print ("result =", result)
+        print("result =", result)
 
         self.prediction = result.argmax()
 
-        print ("prediction =", self.prediction)
+        print("prediction =", self.prediction)'''
+        img = Image.open(img)
+        # resize image to 28x28 pixels
+        img = img.resize((28, 28))
+        # convert rgb to grayscaley
+
+        img = img.convert('L')
+        img = np.array(img)
+        # reshaping for model normalization
+        img = img.reshape(-1, 28, 28, 1)
+        img = img / 255.0
+        # predicting the class
+        res = self.model.predict([img])[0]
+        print("resut : ", res)
+        self.prediction = res.argmax()
+
+        print("prediction =", self.prediction)
+        return np.argmax(res), max(res)
 
     def LoadModel(self, Parameters):
         user_path = os.path.join(Parameters.SaveModelDir, Parameters.wanted_model)
-        model_path = os.path.join(user_path, "bestmodel.hdf5")
+        model_path = os.path.join(user_path, "bestmodel.h5")
         print(model_path)
         with CustomObjectScope({'GlorotUniform': glorot_uniform()}):
             self.model = load_model(model_path)
