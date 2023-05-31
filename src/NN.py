@@ -183,6 +183,16 @@ class NN():
         print("resut : ", res)
         self.prediction = res.argmax()
         print("prediction =", self.prediction)
+        data = str(self.prediction) + ' ' + str(int(max(res) * 100)) + '%'
+
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        fontScale = 0.5
+        color = (255, 0, 0)
+        thickness = 1
+        cv2.putText(image, data, (x, y - 5), font, fontScale, color, thickness)
+
+        cv2.imshow('image', image)
+        cv2.waitKey(0)
         return np.argmax(res), max(res)
 
     def LoadModel(self, Parameters):

@@ -137,21 +137,20 @@ class Draw():
             file_ss = 'raw_image.png'
             image_path = os.path.join(self.Parameters.SaveImageDir, file_ss)
             print("file_ss : ",image_path)
-            x = self.root.winfo_rootx() + self.background.winfo_x()
+            x = self.root.winfo_rootx() + self.background.winfo_x() + 10
             #print("self.root.winfo_rootx()", self.root.winfo_rootx())
             #print("x  self.background.winfo_x()")
-            print(x, self.background.winfo_x())
-            y = self.root.winfo_rooty() + self.background.winfo_y()
+            y = self.root.winfo_rooty() + self.background.winfo_y() + 10
             #print("y : ",y)
 
-            x1 = x + self.background.winfo_width()
+            x1 = x + self.background.winfo_width() - 20
             #print("x1 : ",x1)
-            y1 = y + self.background.winfo_height()
+            y1 = y + self.background.winfo_height() - 20
             #print("y1 : ",y1)
             #ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
             ImageGrab.grab((x, y, x1, y1)).save(image_path)
 
-            messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
+            #messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
 
         except:
             print("Error in saving the saving")
