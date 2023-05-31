@@ -7,8 +7,12 @@ import subprocess
 import os
 import PIL.ImageGrab as ImageGrab
 
-import Parameters
 import SaveImage
+import cv2
+
+
+#import Parameters
+#import SaveImage
 
 
 # Defining Class and constructor of the Program
@@ -25,6 +29,8 @@ class Draw():
         # variables for pointer and Eraser
         self.pointer = "black"
         self.erase = "white"
+        self.last_x = None
+        self.last_y = None
 
         # Widgets for Tkinter Window
 
@@ -95,8 +101,10 @@ class Draw():
         x1, y1 = (event.x - 2), (event.y - 2)
         x2, y2 = (event.x + 2), (event.y + 2)
 
-        self.background.create_oval(x1, y1, x2, y2, fill=self.pointer, outline=self.pointer,
-                                    width=self.pointer_size.get())
+        '''self.background.create_oval(x1, y1, x2, y2, fill=self.pointer, outline=self.pointer,
+                                    width=self.pointer_size.get())'''
+        self.background.create_line((x1,y1,x2,y2),width=8, fill='black', capstyle=ROUND, smooth=TRUE, splinesteps=12)
+
 
     # Function for choosing the color of pointer
     def select_color(self, col):

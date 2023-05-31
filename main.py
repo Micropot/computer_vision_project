@@ -26,7 +26,7 @@ def main(argv):
     #*********** GUI ************
     root = Tk()
     p = src.gui.Draw(root, proj_param)
-    #root.mainloop()
+    root.mainloop()
 
 
     #******** IMAGE **********
