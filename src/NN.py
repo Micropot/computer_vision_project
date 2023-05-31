@@ -193,6 +193,7 @@ class NN():
 
         cv2.imshow('image', image)
         cv2.waitKey(0)
+        cv2.destroyWindow('image')
         return np.argmax(res), max(res)
 
     def LoadModel(self, Parameters):

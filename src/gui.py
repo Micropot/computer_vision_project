@@ -1,4 +1,5 @@
 import datetime
+import glob
 from tkinter import *
 import tkinter as tk
 from tkinter.ttk import Scale
@@ -9,6 +10,9 @@ import PIL.ImageGrab as ImageGrab
 
 import SaveImage
 import cv2
+
+from NN import NN
+from data_processing import ImageManagement
 
 
 #import Parameters
@@ -151,6 +155,19 @@ class Draw():
             ImageGrab.grab((x, y, x1, y1)).save(image_path)
 
             #messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
+
+            MyImage = ImageManagement()
+            MyIA = NN()
+            MyIA.LoadModel(self.Parameters)
+
+            MyImage.DonneeImage = MyImage.LectureFichierImage(str(self.Parameters.SaveImageDir + 'raw_image.png'),
+                                                              self.Parameters)
+            # MyImage.ResizeImage()
+            list_of_file = glob.glob(str(self.Parameters.SaveImageDir + '/*.png'))
+            latest_file = max(list_of_file, key=os.path.getctime)
+            print("latest file : ", latest_file)
+            # MyIA.Prediction(latest_file)
+            MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'))
 
         except:
             print("Error in saving the saving")
