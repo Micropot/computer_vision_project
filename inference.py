@@ -13,7 +13,7 @@ def inference(argv):
     inf_param = src.Parameters.Parameters()
     inf_param = src.file_reading.YAML_Reader(argv[1], inf_param)
     user_path = os.path.join(inf_param.SaveModelDir, inf_param.wanted_model)
-    model_path = os.path.join(user_path, "bestmodel.hdf5")
+    model_path = os.path.join(user_path, "bestmodel.h5")
 
     MyIA_inf = NN()
     MyIA_inf.load_dataset(inf_param)
