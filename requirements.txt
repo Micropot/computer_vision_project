@@ -1,97 +1,79 @@
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: osx-64
-absl-py=1.4.0=pypi_0
-astunparse=1.6.3=pypi_0
-brotli=1.0.9=hb7f2c08_8
-brotli-bin=1.0.9=hb7f2c08_8
-ca-certificates=2023.5.7=h8857fd0_0
-cachetools=5.3.0=pypi_0
-certifi=2022.12.7=pypi_0
-contourpy=1.0.7=py38h98b9b1b_0
-cycler=0.11.0=pyhd8ed1ab_0
-flatbuffers=23.3.3=pypi_0
-fonttools=4.39.4=py38hcafd530_0
-freetype=2.12.1=hd8bbffd_0
-gast=0.4.0=pypi_0
-giflib=5.2.1=hb7f2c08_3
-google-auth=2.17.3=pypi_0
-google-auth-oauthlib=1.0.0=pypi_0
-google-pasta=0.2.0=pypi_0
-grpcio=1.54.0=pypi_0
-h5py=3.8.0=pypi_0
-idna=3.4=pypi_0
-importlib-metadata=6.6.0=pypi_0
-importlib-resources=5.12.0=pyhd8ed1ab_0
-importlib_resources=5.12.0=pyhd8ed1ab_0
-jax=0.4.8=pypi_0
-jpeg=9e=hb7f2c08_3
-keras=2.12.0=pypi_0
-kiwisolver=1.4.4=py38h98b9b1b_1
-lcms2=2.15=h29502cd_0
-lerc=3.0=he9d5cce_0
-libblas=3.9.0=16_osx64_openblas
-libbrotlicommon=1.0.9=hb7f2c08_8
-libbrotlidec=1.0.9=hb7f2c08_8
-libbrotlienc=1.0.9=hb7f2c08_8
-libcblas=3.9.0=16_osx64_openblas
-libclang=16.0.0=pypi_0
-libcxx=14.0.6=h9765a3e_0
-libdeflate=1.17=hac1461d_0
-libffi=3.4.2=hecd8cb5_6
-libgfortran=5.0.0=11_3_0_h97931a8_31
-libgfortran5=12.2.0=he409387_31
-liblapack=3.9.0=16_osx64_openblas
-libopenblas=0.3.21=openmp_h429af6e_3
-libpng=1.6.39=h6c40b1e_0
-libtiff=4.5.0=hcec6c5f_2
-libwebp=1.2.4=h70a068d_1
-libwebp-base=1.2.4=h6c40b1e_1
-llvm-openmp=16.0.3=hff08bdf_0
-lz4-c=1.9.4=hf0c8a7f_0
-markdown=3.4.3=pypi_0
-markupsafe=2.1.2=pypi_0
-matplotlib=3.7.1=py38h50d1736_0
-matplotlib-base=3.7.1=py38hcb346ec_0
-ml-dtypes=0.1.0=pypi_0
-munkres=1.1.4=pyh9f0ad1d_0
-ncurses=6.4=hcec6c5f_0
-numpy=1.23.5=py38hc2f29e8_0
-oauthlib=3.2.2=pypi_0
-openssl=1.1.1t=hfd90126_0
-opt-einsum=3.3.0=pypi_0
-packaging=23.1=pyhd8ed1ab_0
-pillow=9.4.0=py38hcec6c5f_0
-pip=23.0.1=py38hecd8cb5_0
-protobuf=4.22.4=pypi_0
-pyasn1=0.5.0=pypi_0
-pyasn1-modules=0.3.0=pypi_0
-pydot=1.4.2=pypi_0
-pyparsing=3.0.9=pyhd8ed1ab_0
-pyside2=5.15.2.1=pypi_0
-python=3.8.16=h218abb5_3
-python-dateutil=2.8.2=pyhd8ed1ab_0
-python_abi=3.8=2_cp38
-readline=8.2=hca72f7f_0
-requests-oauthlib=1.3.1=pypi_0
-rsa=4.9=pypi_0
-setuptools=66.0.0=py38hecd8cb5_0
-shiboken2=5.15.2.1=pypi_0
-six=1.16.0=pyh6c4a22f_0
-sqlite=3.41.2=h6c40b1e_0
-tensorboard=2.12.3=pypi_0
-tensorboard-data-server=0.7.0=pypi_0
-tensorflow=2.12.0=pypi_0
-tensorflow-estimator=2.12.0=pypi_0
-tensorflow-io-gcs-filesystem=0.32.0=pypi_0
-termcolor=2.3.0=pypi_0
-tk=8.6.12=h5d9f67b_0
-tornado=6.3=py38hef030d1_0
-unicodedata2=15.0.0=py38hef030d1_0
-werkzeug=2.3.3=pypi_0
-wheel=0.38.4=py38hecd8cb5_0
-wrapt=1.14.1=pypi_0
-xz=5.4.2=h6c40b1e_0
-zipp=3.15.0=pyhd8ed1ab_0
-zlib=1.2.13=h4dc903c_0
-zstd=1.5.5=hc035e20_0
+absl-py==1.4.0
+albumentations==1.3.0
+astunparse==1.6.3
+cachetools==5.3.0
+certifi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b64zphacdv/croot/certifi_1683875375103/work/certifi
+charset-normalizer==3.0.1
+contourpy @ file:///Users/runner/miniforge3/conda-bld/contourpy_1673633754816/work
+cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1635519461629/work
+efficientnet-pytorch==0.7.1
+filelock==3.9.0
+flatbuffers==23.3.3
+fonttools @ file:///Users/runner/miniforge3/conda-bld/fonttools_1683740728796/work
+gast==0.4.0
+google-auth==2.17.3
+google-auth-oauthlib==1.0.0
+google-pasta==0.2.0
+grpcio==1.54.0
+h5py==3.8.0
+idna==3.4
+imageio==2.24.0
+importlib-metadata==6.6.0
+importlib-resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1676919000169/work
+jax==0.4.8
+joblib==1.2.0
+keras==2.12.0
+kiwisolver @ file:///Users/runner/miniforge3/conda-bld/kiwisolver_1666805801984/work
+libclang==16.0.0
+Markdown==3.4.3
+MarkupSafe==2.1.2
+matplotlib @ file:///Users/runner/miniforge3/conda-bld/matplotlib-suite_1678135672482/work
+ml-dtypes==0.1.0
+munch==2.5.0
+munkres==1.1.4
+networkx==3.0
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1668919164289/work
+oauthlib==3.2.2
+opencv-python-headless==4.7.0.68
+opt-einsum==3.3.0
+packaging==23.0
+Pillow==9.4.0
+pretrainedmodels==0.7.4
+protobuf==4.22.4
+pyasn1==0.5.0
+pyasn1-modules==0.3.0
+pydot==1.4.2
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
+PySide2==5.15.2.1
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+PyWavelets==1.4.1
+PyYAML==6.0
+qudida==0.0.4
+requests==2.28.2
+requests-oauthlib==1.3.1
+rsa==4.9
+scikit-image==0.19.3
+scikit-learn==1.2.0
+scipy==1.10.0
+shiboken2==5.15.2.1
+six==1.16.0
+tensorboard==2.12.3
+tensorboard-data-server==0.7.0
+tensorflow==2.12.0
+tensorflow-estimator==2.12.0
+tensorflow-io-gcs-filesystem==0.32.0
+termcolor==2.3.0
+threadpoolctl==3.1.0
+tifffile==2022.10.10
+timm==0.6.12
+tk==0.1.0
+torch==1.13.1
+torchvision==0.14.1
+tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1681817788593/work
+tqdm==4.64.1
+typing_extensions==4.4.0
+unicodedata2 @ file:///Users/runner/miniforge3/conda-bld/unicodedata2_1667239984896/work
+urllib3==1.26.14
+Werkzeug==2.3.3
+wrapt==1.14.1
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1677313463193/work
