@@ -4,7 +4,7 @@ import tkinter as tk
 #import win32gui
 from PIL import ImageGrab, Image
 import numpy as np
-model = load_model('/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveModels/2023_05_10_17_23_35/bestmodel.hdf5')
+model = load_model('/Users/A/PycharmProjects/computer_vision_project/SaveModels/2023_05_29_11_21_05/bestmodel.h5')
 def predict_digit(img):
     #resize image to 28x28 pixels
     img = img.resize((28,28))
