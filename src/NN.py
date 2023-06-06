@@ -32,16 +32,6 @@ class NN():
         (self.x_train, self.y_train), (self.x_test, self.y_test) = tf.keras.datasets.mnist.load_data()
 
         # Preprocess the data (these are NumPy arrays)
-        '''print(type(self.x_train[0]))
-        self.x_train = self.x_train.reshape(self.x_train[0],28,28,1).astype("float32") / 255
-        self.x_test = self.x_test.reshape(self.x_test[0],28,28,1).astype("float32") / 255
-        self.x_train, self.x_test = self.x_train / 255.0, self.x_test / 255.0
-
-        self.y_train = self.y_train.astype("float32")
-        self.y_test = self.y_test.astype("float32")
-
-        self.y_train = to_categorical(self.y_train)
-        self.y_test = to_categorical(self.y_test)'''
 
         self.x_train, self.x_test = self.x_train / 255.0, self.x_test / 255.0
 
@@ -51,40 +41,15 @@ class NN():
 
 
         # Reserve 10,000 samples for validation
-        '''self.x_val = self.x_train[-10000:]
-        self.y_val = self.y_train[-10000:]
-        self.x_train = self.x_train[:-10000]
-        self.y_train = self.y_train[:-10000]'''
+
 
         print("size of train : ", len(self.x_train))
         #print("size of validation : ", len(self.x_val))
         print("size of test : ", len(self.x_test))
-        '''self.x_train = self.x_train.reshape(self.x_train[0],28,28,1).astype('float32')
-        self.x_test = np.array(self.x_test).reshape(self.x_test[0],28,28,1).astype('float32')
-
-        self.y_train = to_categorical(self.y_train)
-        self.y_test = to_categorical(self.y_test)
-
-        self.x_train = self.x_train/255
-        self.x_test = self.x_test/255'''
 
 
     def CreateModel(self, Parameters):
-        num_classes = Parameters.num_classes
-        '''self.model = tf.keras.models.Sequential([
-
-            tf.keras.layers.Convolution2D(32, kernel_size=(3,3), activation='relu', input_shape=(28,28)),
-            tf.keras.layers.Convolution2D(64,(3,3), activation='relu'),
-            tf.keras.layers.MaxPool2D(pool_size=(2,2)),
-            tf.keras.layers.Dropout(0,25),
-            tf.keras.layers.Dense(num_classes, activation='softmax')
-        ])'''
-
-        '''
-                tf.keras.layers.Flatten(input_shape=(28, 28)),
-                tf.keras.layers.Dense(512, activation=tf.nn.relu),
-                tf.keras.layers.Dropout(0.2),
-                tf.keras.layers.Dense(10, activation=tf.nn.softmax)'''
+        #num_classes = Parameters.num_classes
 
         self.model = models.Sequential()
         self.model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
