@@ -127,34 +127,6 @@ class NN():
 
     def Prediction(self, img):
         print("Prediction for one image")
-        '''img = Image.open(MyImage).convert("L")
-        img = img.resize((28, 28))
-        #img = PIL.ImageOps.invert(img)
-        img = np.array(img)
-        resized_img = img.reshape(1, 28, 28, 1)
-        #print("shape : ", resized_img.shape())
-        resized_img = resized_img/255.0
-        result = self.model.predict(resized_img)
-
-        print("result =", result)
-
-        self.prediction = result.argmax()
-
-        print("prediction =", self.prediction)'''
-        '''img = Image.open(img)
-        # resize image to 28x28 pixels
-        img = img.resize((28, 28))
-        # convert rgb to grayscaley
-
-        img = img.convert('L')
-        img = np.array(img)
-        # reshaping for model normalization
-        img = img.reshape(-1, 28, 28, 1)
-        img = img / 255.0
-        # predicting the class
-        res = self.model.predict([img])[0]
-        print("resut : ", res)
-        self.prediction = res.argmax()'''
 
         image = cv2.imread(img, cv2.IMREAD_COLOR)
         gray = cv2.cvtColor(image.copy(), cv2.COLOR_BGR2GRAY)
