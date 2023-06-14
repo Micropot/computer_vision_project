@@ -17,7 +17,6 @@ mnist = tf.keras.datasets.mnist
 
 class NN():
     def __int__(self):
-        print("NN construction ")
         self.x_train = []
         self.y_train = []
         self.x_val = []
@@ -30,27 +29,14 @@ class NN():
 
     def load_dataset(self, Parameters):
         (self.x_train, self.y_train), (self.x_test, self.y_test) = tf.keras.datasets.mnist.load_data()
-
-        # Preprocess the data (these are NumPy arrays)
-
         self.x_train, self.x_test = self.x_train / 255.0, self.x_test / 255.0
-
         Parameters.x_test = self.x_test
         Parameters.y_test = self.y_test
-
-
-
-        # Reserve 10,000 samples for validation
-
-
         print("size of train : ", len(self.x_train))
-        #print("size of validation : ", len(self.x_val))
         print("size of test : ", len(self.x_test))
 
 
     def CreateModel(self, Parameters):
-        #num_classes = Parameters.num_classes
-
         self.model = models.Sequential()
         self.model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
         self.model.add(layers.MaxPooling2D((2, 2)))
@@ -69,8 +55,6 @@ class NN():
 
     def training(self, Parameters):
         SaveModels.CreateFolder(Parameters, None)
-
-        # self.model = self.CreateModel(Parameters)
         Parameters.current_model = self.model
         SaveModels.SaveModel(Parameters)
 
@@ -84,7 +68,6 @@ class NN():
             callbacks=[Parameters.cp_callback],
             verbose=2
         )
-        # SaveModels.VisualiseModel(Parameters)
 
     def evaluate(self, Parameters):
         results = self.model.evaluate(Parameters.x_test, Parameters.y_test)

@@ -49,24 +49,9 @@ class Draw():
         text.tag_add("tag_name", "1.0", "end")
         #text.pack()
 
-        # Pick a color for drawing from color pannel
-        self.pick_color = LabelFrame(self.root, text='Colors', font=('arial', 15), bd=5, relief=RIDGE, bg="white")
-        self.pick_color.place(x=0, y=40, width=90, height=185)
-
-        colors = ['blue', 'red', 'green', 'orange', 'violet', 'black', 'yellow', 'purple', 'pink', 'gold', 'brown',
-                  'indigo']
-        i = j = 0
-        for color in colors:
-            Button(self.pick_color, bg=color, bd=2, relief=RIDGE, width=3,
-                   command=lambda col=color: self.select_color(col)).grid(row=i, column=j)
-            i += 1
-            if i == 6:
-                i = 0
-                j = 1
-
         # Erase Button and its properties
-        self.eraser_btn = Button(self.root, text="Eraser", bd=4, bg='white', command=self.eraser, width=9, relief=RIDGE)
-        self.eraser_btn.place(x=0, y=197)
+        #self.eraser_btn = Button(self.root, text="Eraser", bd=4, bg='white', command=self.eraser, width=9, relief=RIDGE)
+        #self.eraser_btn.place(x=0, y=197)
 
         # Reset Button to clear the entire screen
         self.clear_screen = Button(self.root, text="Clear Screen", bd=4, bg='white',
@@ -74,22 +59,9 @@ class Draw():
         self.clear_screen.place(x=0, y=227)
 
         # Save Button for saving the image in local computer
-        self.save_btn = Button(self.root, text="Save", bd=4, bg='white', command=self.save_drawing, width=9,
+        self.save_btn = Button(self.root, text="Predict", bd=4, bg='white', command=self.save_drawing, width=9,
                                relief=RIDGE)
         self.save_btn.place(x=0, y=257)
-
-        # Background Button for choosing color of the Canvas
-        self.bg_btn = Button(self.root, text="Background", bd=4, bg='white', command=self.canvas_color, width=9,
-                             relief=RIDGE)
-        self.bg_btn.place(x=0, y=287)
-
-        # Creating a Scale for pointer and eraser size
-        self.pointer_frame = LabelFrame(self.root, text='size', bd=5, bg='white', font=('arial', 15, 'bold'),relief=RIDGE)
-        self.pointer_frame.place(x=0, y=320, height=200, width=70)
-
-        self.pointer_size = Scale(self.pointer_frame, orient=VERTICAL, from_=48, to=48, length=168)
-        self.pointer_size.set(1)
-        self.pointer_size.grid(row=0, column=1, padx=15)
 
         # Defining a background color for the Canvas
         self.background = Canvas(self.root, bg='white', bd=5, relief=GROOVE, height=470, width=680)
@@ -109,21 +81,6 @@ class Draw():
                                     width=self.pointer_size.get())'''
         self.background.create_line((x1,y1,x2,y2),width=8, fill='black', capstyle=ROUND, smooth=TRUE, splinesteps=12)
 
-
-    # Function for choosing the color of pointer
-    def select_color(self, col):
-        self.pointer = col
-
-    # Function for defining the eraser
-    def eraser(self):
-        self.pointer = self.erase
-
-    # Function for choosing the background color of the Canvas
-    def canvas_color(self):
-        color = colorchooser.askcolor()
-        self.background.configure(background=color[1])
-        self.erase = color[1]
-
     def SaveFile(self, Parameters):
         dir_path = os.path.dirname(Parameters.SaveImageDir)
         print("dir_path : ",dir_path)
@@ -135,23 +92,13 @@ class Draw():
             self.background.update()
             #Create a folder for the images
             SaveImage.CreateFolder_Image(self.Parameters)
-            #file_ss = filedialog.asksaveasfilename(defaultextension='png')
-            #now = datetime.datetime.now()
-            #currentDateTime = now.strftime("%Y_%m_%d_%H_%M_%S")
             file_ss = 'raw_image.png'
             image_path = os.path.join(self.Parameters.SaveImageDir, file_ss)
-            print("file_ss : ",image_path)
             x = self.root.winfo_rootx() + self.background.winfo_x() + 10
-            #print("self.root.winfo_rootx()", self.root.winfo_rootx())
-            #print("x  self.background.winfo_x()")
             y = self.root.winfo_rooty() + self.background.winfo_y() + 10
-            #print("y : ",y)
-
             x1 = x + self.background.winfo_width() - 20
-            #print("x1 : ",x1)
             y1 = y + self.background.winfo_height() - 20
-            #print("y1 : ",y1)
-            #ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
+            # take a screenshot of the screen and resize it
             ImageGrab.grab((x, y, x1, y1)).save(image_path)
 
             #messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))

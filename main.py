@@ -28,20 +28,5 @@ def main(argv):
     root.mainloop()
 
 
-    #******** IMAGE PREDICTION**********
-    '''MyImage = ImageManagement()
-
-    MyImage.DonneeImage = MyImage.LectureFichierImage(str(proj_param.SaveImageDir + 'raw_image.png'), proj_param)
-    #MyImage.ResizeImage()
-    list_of_file = glob.glob(str(proj_param.SaveImageDir + '/*.png'))
-    latest_file = max(list_of_file, key=os.path.getctime)
-    print("latest file : ", latest_file)
-    #MyIA.Prediction(latest_file)
-    MyIA.Prediction(str(proj_param.SaveImageDir + 'raw_image.png'))'''
-
-
-
-
-
 if __name__ == "__main__":
     main(sys.argv)
