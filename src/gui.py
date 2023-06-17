@@ -10,6 +10,11 @@ import PIL.ImageGrab as ImageGrab
 
 import SaveImage
 import cv2
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+from tkinter import simpledialog
+from pathlib import Path
 
 from NN import NN
 from data_processing import ImageManagement
@@ -114,7 +119,30 @@ class Draw():
             latest_file = max(list_of_file, key=os.path.getctime)
             print("latest file : ", latest_file)
             # MyIA.Prediction(latest_file)
-            MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'))
+            pred = MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'))
+            USER_INP = simpledialog.askstring(title="Test",
+                                              prompt="Is your prediction correct (y/n) ? :")
+            if USER_INP == 'y':
+                #TODO : find the right file name for the input lablel (maybe create a file label)
+                print("YES")
+                print(os.path.basename(os.path.normpath(self.Parameters.image_path)))
+                '''print("YES")
+                p = Path(self.Parameters.image_path)
+                print(p.rename(p.with_suffix('.txt')))'''
+                '''with open(p.rename(p.with_suffix('.txt')), 'w') as f:
+                    f.write(pred[0])
+                f.close()'''
+            else:
+                print("NO")
+                USER_LABEL = simpledialog.askstring(title="Test",prompt="What was your number ? :")
+                print(USER_LABEL)
+                print(os.path.basename(os.path.normpath(self.Parameters.image_path)))
+
+                '''p = Path(self.Parameters.image_path)
+                print(p.rename(p.with_suffix('.txt')))'''
+                '''with open(p.rename(p.with_suffix('.txt')), 'w') as f:
+                    f.write(USER_LABEL)
+                f.close()'''
 
         except:
             print("Error in saving the saving")
