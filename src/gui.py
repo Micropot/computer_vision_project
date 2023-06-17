@@ -120,23 +120,25 @@ class Draw():
             print("latest file : ", latest_file)
             # MyIA.Prediction(latest_file)
             pred = MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'))
+            SaveImage.CreateFolder_label(self.Parameters)
             USER_INP = simpledialog.askstring(title="Test",
                                               prompt="Is your prediction correct (y/n) ? :")
             if USER_INP == 'y':
-                #TODO : find the right file name for the input lablel (maybe create a file label)
                 print("YES")
                 pass
-            else:
+            if USER_INP == "n":
                 print("NO")
                 USER_LABEL = simpledialog.askstring(title="Label",prompt="What was your number ? :")
-                print(USER_LABEL)
-                print(os.path.basename(os.path.normpath(self.Parameters.image_path)))
-
-                '''p = Path(self.Parameters.image_path)
-                print(p.rename(p.with_suffix('.txt')))'''
-                '''with open(p.rename(p.with_suffix('.txt')), 'w') as f:
+                print("USER_LABEL : ",USER_LABEL)
+                label = os.path.basename(os.path.normpath(self.Parameters.image_path))
+                new_label = os.path.splitext(label)[0]
+                label_path = os.path.join(self.Parameters.LabelsDir, str(new_label+'.txt'))
+                print(label_path)
+                with open(label_path, 'w') as f:
                     f.write(USER_LABEL)
-                f.close()'''
+                f.close()
+            else:
+                print("Error, please enter y or n ")
 
         except:
             print("Error in saving the saving")

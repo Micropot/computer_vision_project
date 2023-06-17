@@ -17,5 +17,6 @@ class Parameters:
         self.SaveImageDir = None
         self.image_path = None
         self.num_classes = None
+        self.LabelsDir = None
     def Print(self):
         print("PROJ_DIR : ", self.PROJECT_DIR)
