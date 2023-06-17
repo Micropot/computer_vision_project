@@ -125,16 +125,10 @@ class Draw():
             if USER_INP == 'y':
                 #TODO : find the right file name for the input lablel (maybe create a file label)
                 print("YES")
-                print(os.path.basename(os.path.normpath(self.Parameters.image_path)))
-                '''print("YES")
-                p = Path(self.Parameters.image_path)
-                print(p.rename(p.with_suffix('.txt')))'''
-                '''with open(p.rename(p.with_suffix('.txt')), 'w') as f:
-                    f.write(pred[0])
-                f.close()'''
+                pass
             else:
                 print("NO")
-                USER_LABEL = simpledialog.askstring(title="Test",prompt="What was your number ? :")
+                USER_LABEL = simpledialog.askstring(title="Label",prompt="What was your number ? :")
                 print(USER_LABEL)
                 print(os.path.basename(os.path.normpath(self.Parameters.image_path)))
 
