@@ -126,14 +126,14 @@ class Draw():
             if USER_INP == 'y':
                 print("YES")
                 pass
-            if USER_INP == "n":
+            elif USER_INP == "n":
                 print("NO")
                 USER_LABEL = simpledialog.askstring(title="Label",prompt="What was your number ? :")
                 print("USER_LABEL : ",USER_LABEL)
                 label = os.path.basename(os.path.normpath(self.Parameters.image_path))
                 new_label = os.path.splitext(label)[0]
                 label_path = os.path.join(self.Parameters.LabelsDir, str(new_label+'.txt'))
-                print(label_path)
+                #print(label_path)
                 with open(label_path, 'w') as f:
                     f.write(USER_LABEL)
                 f.close()
