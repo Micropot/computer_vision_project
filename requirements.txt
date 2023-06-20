@@ -1,0 +1,79 @@
+absl-py==1.4.0
+albumentations==1.3.0
+astunparse==1.6.3
+cachetools==5.3.0
+certifi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b64zphacdv/croot/certifi_1683875375103/work/certifi
+charset-normalizer==3.0.1
+contourpy @ file:///Users/runner/miniforge3/conda-bld/contourpy_1673633754816/work
+cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1635519461629/work
+efficientnet-pytorch==0.7.1
+filelock==3.9.0
+flatbuffers==23.3.3
+fonttools @ file:///Users/runner/miniforge3/conda-bld/fonttools_1683740728796/work
+gast==0.4.0
+google-auth==2.17.3
+google-auth-oauthlib==1.0.0
+google-pasta==0.2.0
+grpcio==1.54.0
+h5py==3.8.0
+idna==3.4
+imageio==2.24.0
+importlib-metadata==6.6.0
+importlib-resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1676919000169/work
+jax==0.4.8
+joblib==1.2.0
+keras==2.12.0
+kiwisolver @ file:///Users/runner/miniforge3/conda-bld/kiwisolver_1666805801984/work
+libclang==16.0.0
+Markdown==3.4.3
+MarkupSafe==2.1.2
+matplotlib @ file:///Users/runner/miniforge3/conda-bld/matplotlib-suite_1678135672482/work
+ml-dtypes==0.1.0
+munch==2.5.0
+munkres==1.1.4
+networkx==3.0
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1668919164289/work
+oauthlib==3.2.2
+opencv-python-headless==4.7.0.68
+opt-einsum==3.3.0
+packaging==23.0
+Pillow==9.4.0
+pretrainedmodels==0.7.4
+protobuf==4.22.4
+pyasn1==0.5.0
+pyasn1-modules==0.3.0
+pydot==1.4.2
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
+PySide2==5.15.2.1
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+PyWavelets==1.4.1
+PyYAML==6.0
+qudida==0.0.4
+requests==2.28.2
+requests-oauthlib==1.3.1
+rsa==4.9
+scikit-image==0.19.3
+scikit-learn==1.2.0
+scipy==1.10.0
+shiboken2==5.15.2.1
+six==1.16.0
+tensorboard==2.12.3
+tensorboard-data-server==0.7.0
+tensorflow==2.12.0
+tensorflow-estimator==2.12.0
+tensorflow-io-gcs-filesystem==0.32.0
+termcolor==2.3.0
+threadpoolctl==3.1.0
+tifffile==2022.10.10
+timm==0.6.12
+tk==0.1.0
+torch==1.13.1
+torchvision==0.14.1
+tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1681817788593/work
+tqdm==4.64.1
+typing_extensions==4.4.0
+unicodedata2 @ file:///Users/runner/miniforge3/conda-bld/unicodedata2_1667239984896/work
+urllib3==1.26.14
+Werkzeug==2.3.3
+wrapt==1.14.1
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1677313463193/work
