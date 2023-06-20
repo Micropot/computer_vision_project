@@ -10,6 +10,11 @@ import PIL.ImageGrab as ImageGrab
 
 import SaveImage
 import cv2
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+from tkinter import simpledialog
+from pathlib import Path
 
 from NN import NN
 from data_processing import ImageManagement
@@ -75,7 +80,7 @@ class Draw:
         self.clear_screen.place(x=0, y=257)
 
         # Save Button for saving the image in local computer
-        self.save_btn = Button(self.root, text="Save", bd=4, bg='white', command=self.save_drawing, width=9,
+        self.save_btn = Button(self.root, text="Predict", bd=4, bg='white', command=self.save_drawing, width=9,
                                relief=RIDGE)
         self.save_btn.place(x=0, y=287)
 
@@ -91,6 +96,7 @@ class Draw:
         self.pointer_size = Scale(self.pointer_frame, orient=VERTICAL, from_=48, to=100, length=148)
         self.pointer_size.set(1)
         self.pointer_size.grid(row=0, column=1, padx=15)
+
 
         # Defining a background color for the Canvas
         self.background = Canvas(self.root, bg='white', bd=5, relief=GROOVE, height=470, width=680)
@@ -110,21 +116,6 @@ class Draw:
                                     width=self.pointer_size.get())'''
         self.background.create_line((x1,y1,x2,y2),width=8, fill=self.pointer, capstyle=ROUND, smooth=TRUE, splinesteps=12)
 
-
-    # Function for choosing the color of pointer
-    def select_color(self, col):
-        self.pointer = col
-
-    # Function for defining the eraser
-    def eraser(self):
-        self.pointer = self.erase
-
-    # Function for choosing the background color of the Canvas
-    def canvas_color(self):
-        color = colorchooser.askcolor()
-        self.background.configure(background=color[1])
-        self.erase = color[1]
-
     def SaveFile(self, Parameters):
         dir_path = os.path.dirname(Parameters.SaveImageDir)
         print("dir_path : ",dir_path)
@@ -136,23 +127,13 @@ class Draw:
             self.background.update()
             #Create a folder for the images
             SaveImage.CreateFolder_Image(self.Parameters)
-            #file_ss = filedialog.asksaveasfilename(defaultextension='png')
-            #now = datetime.datetime.now()
-            #currentDateTime = now.strftime("%Y_%m_%d_%H_%M_%S")
             file_ss = 'raw_image.png'
             image_path = os.path.join(self.Parameters.SaveImageDir, file_ss)
-            print("file_ss : ",image_path)
             x = self.root.winfo_rootx() + self.background.winfo_x() + 10
-            #print("self.root.winfo_rootx()", self.root.winfo_rootx())
-            #print("x  self.background.winfo_x()")
             y = self.root.winfo_rooty() + self.background.winfo_y() + 10
-            #print("y : ",y)
-
             x1 = x + self.background.winfo_width() - 20
-            #print("x1 : ",x1)
             y1 = y + self.background.winfo_height() - 20
-            #print("y1 : ",y1)
-            #ImageGrab.grab().crop((x, y, x1, y1)).save(file_ss)
+            # take a screenshot of the screen and resize it
             ImageGrab.grab((x, y, x1, y1)).save(image_path)
 
             #messagebox.showinfo('Screenshot Successfully Saved as' + str(file_ss))
@@ -168,7 +149,27 @@ class Draw:
             latest_file = max(list_of_file, key=os.path.getctime)
             print("latest file : ", latest_file)
             # MyIA.Prediction(latest_file)
+
             MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'), self.Parameters)
+            SaveImage.CreateFolder_label(self.Parameters)
+            USER_INP = simpledialog.askstring(title="Test",
+                                              prompt="Is your prediction correct (y/n) ? :")
+            if USER_INP == 'y':
+                print("YES")
+                pass
+            elif USER_INP == "n":
+                print("NO")
+                USER_LABEL = simpledialog.askstring(title="Label",prompt="What was your number ? :")
+                print("USER_LABEL : ",USER_LABEL)
+                label = os.path.basename(os.path.normpath(self.Parameters.image_path))
+                new_label = os.path.splitext(label)[0]
+                label_path = os.path.join(self.Parameters.LabelsDir, str(new_label+'.txt'))
+                #print(label_path)
+                with open(label_path, 'w') as f:
+                    f.write(USER_LABEL)
+                f.close()
+            else:
+                print("Error, please enter y or n ")
 
         except:
             print("Error in saving the saving")

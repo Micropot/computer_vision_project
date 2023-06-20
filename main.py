@@ -13,6 +13,7 @@ from tkinter import messagebox, simpledialog, filedialog
 
 from src.data_processing import ImageManagement
 
+
 def save_prediction(correct_prediction, prediction_name):
     if correct_prediction:
         filename = str(prediction_name) + ".txt"
@@ -68,7 +69,6 @@ def main(argv):
 
     root.mainloop()
 
-
     #******** IMAGE PREDICTION **********
     '''MyImage = ImageManagement()
 
@@ -82,7 +82,6 @@ def main(argv):
 
     #******** POP UP WINDOW WITH FILE SAVING **********
     display_popup(pred)
-
 
 
 

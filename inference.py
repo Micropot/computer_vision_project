@@ -21,8 +21,7 @@ def inference(argv):
     MyIA_inf.LoadModel(Parameters=inf_param)
     MyIA_inf.evaluate(inf_param)
 
-    #results = inf_model.evaluate(inf_param.x_test, inf_param.y_test)
-    #print("test loss, test acc:", results)
+
 
 
 
