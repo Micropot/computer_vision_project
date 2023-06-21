@@ -85,9 +85,8 @@ class Draw:
         self.save_btn.place(x=0, y=287)
 
         # Background Button for choosing color of the Canvas
-        self.bg_btn = Button(self.root, text="Background", bd=4, bg='white', command=self.canvas_color, width=9,
-                             relief=RIDGE)
-        self.bg_btn.place(x=0, y=317)
+        #self.bg_btn = Button(self.root, text="Background", bd=4, bg='white', command=self.canvas_color, width=9,relief=RIDGE)
+        #self.bg_btn.place(x=0, y=317)
 
         # Creating a Scale for pointer and eraser size
         self.pointer_frame = LabelFrame(self.root, text='size', bd=5, bg='white', font=('arial', 15, 'bold'), relief=RIDGE)
