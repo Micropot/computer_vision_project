@@ -1,10 +1,10 @@
-PROJECT_DIR : '/Users/A/PycharmProjects/computer_vision_project/digit_reco'
+PROJECT_DIR : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco'
 optimizer : 'adam'
 loss : 'sparse_categorical_crossentropy'
 metrics : 'accuracy'
 batch_size : 200
 epoch : 10
-SaveModelDir : 'C:\Users\A\PycharmProjects\computer_vision_project\SaveModels\'
+SaveModelDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveModels/'
 wanted_model : '2023_05_29_11_21_05'
-SaveImageDir : 'C:\Users\A\PycharmProjects\computer_vision_project\SaveImages\'
+SaveImageDir : '/Users/arthurlamard/Documents/Allemagne/cours/computer_science/PROJECT/digit_reco/SaveImages/'
 num_classes : 10
