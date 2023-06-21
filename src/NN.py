@@ -1,5 +1,7 @@
 import numpy as np
 import tensorflow as tf
+
+import Parameters
 import SaveModels
 from keras.models import load_model
 from keras.utils import CustomObjectScope
@@ -18,8 +20,9 @@ from tkinter.messagebox import showinfo
 mnist = tf.keras.datasets.mnist
 
 
-class NN():
-    def __int__(self):
+class NN:
+    def __init__(self):
+        print("NN construction ")
         self.x_train = []
         self.y_train = []
         self.x_val = []
@@ -29,6 +32,12 @@ class NN():
         self.model = None
         self.prediction = -1
         self.digit = None
+
+    def getPrediction(self):
+        return self.prediction
+
+    def setPrediction(self, value):
+        self.prediction = value
 
     def load_dataset(self, Parameters):
         (self.x_train, self.y_train), (self.x_test, self.y_test) = tf.keras.datasets.mnist.load_data()
@@ -76,7 +85,7 @@ class NN():
         results = self.model.evaluate(Parameters.x_test, Parameters.y_test)
         print("test loss, test acc:", results)
 
-    def Prediction(self, img):
+    def Prediction(self, img, Parameters):
         print("Prediction for one image")
 
         image = cv2.imread(img, cv2.IMREAD_COLOR)
@@ -106,6 +115,7 @@ class NN():
         print("resut : ", res)
         self.prediction = res.argmax()
         print("prediction =", self.prediction)
+        Parameters.prediction = self.prediction
         data = str(self.prediction) + ' ' + str(int(max(res) * 100)) + '%'
 
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -125,3 +135,4 @@ class NN():
         print(model_path)
         with CustomObjectScope({'GlorotUniform': glorot_uniform()}):
             self.model = load_model(model_path)
+

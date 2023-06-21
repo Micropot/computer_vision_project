@@ -25,7 +25,7 @@ from data_processing import ImageManagement
 
 
 # Defining Class and constructor of the Program
-class Draw():
+class Draw:
     def __init__(self, root, Parameters):
         # Defining title and Size of the Tkinter Window GUI
         self.Parameters = Parameters
@@ -38,6 +38,7 @@ class Draw():
         # variables for pointer and Eraser
         self.pointer = "black"
         self.erase = "white"
+        self.background = "white"
         self.last_x = None
         self.last_y = None
 
@@ -54,19 +55,48 @@ class Draw():
         text.tag_add("tag_name", "1.0", "end")
         #text.pack()
 
+        # Pick a color for drawing from color pannel
+        self.pick_color = LabelFrame(self.root, text='Colors', font=('arial', 15), bd=5, relief=RIDGE, bg='white')
+        self.pick_color.place(x=0, y=40, width=90, height=185)
+
+        colors = ['blue', 'red', 'green', 'orange', 'violet', 'black', 'yellow', 'purple', 'pink', 'gold', 'brown',
+                  'indigo']
+        i = j = 0
+        for color in colors:
+            Button(self.pick_color, bg=color, bd=2, relief=RIDGE, width=3,
+                   command=lambda col=color: self.select_color(col)).grid(row=i, column=j)
+            i += 1
+            if i == 6:
+                i = 0
+                j = 1
+
         # Erase Button and its properties
-        #self.eraser_btn = Button(self.root, text="Eraser", bd=4, bg='white', command=self.eraser, width=9, relief=RIDGE)
-        #self.eraser_btn.place(x=0, y=197)
+        self.eraser_btn = Button(self.root, text="Eraser", bd=4, bg='white', command=lambda: self.select_color(self.erase), width=9, relief=RIDGE) #self.select_color(self.erase)
+        self.eraser_btn.place(x=0, y=227)
 
         # Reset Button to clear the entire screen
         self.clear_screen = Button(self.root, text="Clear Screen", bd=4, bg='white',
                                    command=lambda: self.background.delete('all'), width=9, relief=RIDGE)
-        self.clear_screen.place(x=0, y=227)
+        self.clear_screen.place(x=0, y=257)
 
         # Save Button for saving the image in local computer
         self.save_btn = Button(self.root, text="Predict", bd=4, bg='white', command=self.save_drawing, width=9,
                                relief=RIDGE)
-        self.save_btn.place(x=0, y=257)
+        self.save_btn.place(x=0, y=287)
+
+        # Background Button for choosing color of the Canvas
+        self.bg_btn = Button(self.root, text="Background", bd=4, bg='white', command=self.canvas_color, width=9,
+                             relief=RIDGE)
+        self.bg_btn.place(x=0, y=317)
+
+        # Creating a Scale for pointer and eraser size
+        self.pointer_frame = LabelFrame(self.root, text='size', bd=5, bg='white', font=('arial', 15, 'bold'), relief=RIDGE)
+        self.pointer_frame.place(x=0, y=350, height=170, width=70)
+
+        self.pointer_size = Scale(self.pointer_frame, orient=VERTICAL, from_=48, to=100, length=148)
+        self.pointer_size.set(1)
+        self.pointer_size.grid(row=0, column=1, padx=15)
+
 
         # Defining a background color for the Canvas
         self.background = Canvas(self.root, bg='white', bd=5, relief=GROOVE, height=470, width=680)
@@ -75,8 +105,8 @@ class Draw():
         # Bind the background Canvas with mouse click
         self.background.bind("<B1-Motion>", self.paint)
 
-    # Functions are defined here
 
+    # Functions are defined here
     # Paint Function for Drawing the lines on Canvas
     def paint(self, event):
         x1, y1 = (event.x - 2), (event.y - 2)
@@ -84,7 +114,7 @@ class Draw():
 
         '''self.background.create_oval(x1, y1, x2, y2, fill=self.pointer, outline=self.pointer,
                                     width=self.pointer_size.get())'''
-        self.background.create_line((x1,y1,x2,y2),width=8, fill='black', capstyle=ROUND, smooth=TRUE, splinesteps=12)
+        self.background.create_line((x1,y1,x2,y2),width=8, fill=self.pointer, capstyle=ROUND, smooth=TRUE, splinesteps=12)
 
     def SaveFile(self, Parameters):
         dir_path = os.path.dirname(Parameters.SaveImageDir)
@@ -119,7 +149,8 @@ class Draw():
             latest_file = max(list_of_file, key=os.path.getctime)
             print("latest file : ", latest_file)
             # MyIA.Prediction(latest_file)
-            pred = MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'))
+
+            MyIA.Prediction(str(self.Parameters.SaveImageDir + 'raw_image.png'), self.Parameters)
             SaveImage.CreateFolder_label(self.Parameters)
             USER_INP = simpledialog.askstring(title="Test",
                                               prompt="Is your prediction correct (y/n) ? :")
@@ -142,3 +173,5 @@ class Draw():
 
         except:
             print("Error in saving the saving")
+
+
