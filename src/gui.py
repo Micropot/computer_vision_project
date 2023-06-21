@@ -116,6 +116,24 @@ class Draw:
                                     width=self.pointer_size.get())'''
         self.background.create_line((x1,y1,x2,y2),width=8, fill=self.pointer, capstyle=ROUND, smooth=TRUE, splinesteps=12)
 
+    # Function for choosing the color of pointer
+    def select_color(self, col):
+        self.pointer = col
+
+    # Function for defining the eraser
+    def eraser(self):
+        self.pointer = self.erase
+
+    # Function for choosing the background color of the Canvas
+    def canvas_color(self):
+        color = colorchooser.askcolor()
+        self.background.configure(background=color[1])
+        self.erase = color[1]
+
+    def SaveFile(self, Parameters):
+        dir_path = os.path.dirname(Parameters.SaveImageDir)
+        print("dir_path : ",dir_path)
+
     def SaveFile(self, Parameters):
         dir_path = os.path.dirname(Parameters.SaveImageDir)
         print("dir_path : ",dir_path)

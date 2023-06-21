@@ -81,6 +81,7 @@ def main(argv):
     MyIA.Prediction(str(proj_param.SaveImageDir + 'raw_image.png'))'''
 
     #******** POP UP WINDOW WITH FILE SAVING **********
+    global pred
     display_popup(pred)
 
 
